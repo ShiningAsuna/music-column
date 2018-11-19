@@ -1,0 +1,261 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+html, body, section {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.6);
+  font: 14px/1.5 Arial;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+main {
+  height: calc(100% - 25vh);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.layout {
+  width: 300px;
+}
+
+@media (min-width: 600px) {
+  .layout {
+    width: 500px;
+  }
+}
+
+@media (min-width: 800px) {
+  .layout {
+    width: 700px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .layout {
+    width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .layout {
+    width: 1100px;
+  }
+}
+
+.controller {
+  float: left;
+  margin-top: 10vh;
+}
+
+.controller figure {
+  height: 45vh;
+  width: 45vh;
+  background-image: url("http://qukufile2.qianqian.com/data2/pic/eb8206edf8c79559588b4797d9418e8e/605007924/605007924.jpg@s_1,w_300,h_300");
+  background-size: cover;
+}
+
+.controller .buttons {
+  margin-top: 5vh;
+  display: flex;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.controller .buttons i {
+  flex: 1;
+  font-size: 4.25vh;
+}
+
+.controller .buttons i::before {
+  cursor: pointer;
+}
+
+.info {
+  padding-left: 60vh;
+  margin-top: 12vh;
+  color: #fff;
+}
+
+.info .tags {
+  margin-bottom: 5vh;
+  font-size: 2vh;
+}
+
+.info .tag {
+  padding: 1vh 2vh;
+  background-color: #2E6EEC;
+}
+
+.info h1 {
+  font-size: 5vh;
+  margin-bottom: 9vh;
+}
+
+.info .datas {
+  display: flex;
+  font-size: 2.5vh;
+}
+
+.info .datas p {
+  flex: 1;
+  text-align: left;
+}
+
+.info .datas i::before {
+  font-size: 2.5vh;
+  cursor: pointer;
+}
+
+.info .datas span {
+  margin-left: 1vh;
+}
+
+.info .progress {
+  margin-top: 7vh;
+  display: flex;
+  align-items: center;
+}
+
+.info .progress .prog-sum {
+  position: relative;
+  height: 0.8vh;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.info .progress .prog-cur {
+  position: absolute;
+  height: 0.8vh;
+  width: 95%;
+  background-color: #fff;
+}
+
+.info .progress .cur-time {
+  padding-left: 1vh;
+  font-size: 2vh;
+}
+
+.info .singer {
+  margin-top: 2vh;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2.5vh;
+}
+
+.info .lyrics {
+  margin-top: 2vh;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 3vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 25vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+footer i.iconfont {
+  position: absolute;
+  bottom: 5vh;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+footer:hover i.iconfont {
+  opacity: 1;
+}
+
+footer i.iconfont::before {
+  font-size: 10vh;
+  cursor: pointer;
+}
+
+footer i.icon-shangyige {
+  left: 4%;
+}
+
+footer i.icon-xiayige {
+  right: 4%;
+}
+
+footer .fig-ct {
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100%;
+}
+
+footer li {
+  float: left;
+  margin-right: 2vh;
+  margin: 2vh 3vh 2vh 1vh;
+  cursor: pointer;
+}
+
+footer li:hover {
+  box-shadow: 0 0 4px 5px #ffffff;
+}
+
+footer li.active {
+  box-shadow: 0 0 4px 5px #ffffff;
+}
+
+footer li .cover {
+  height: 16vh;
+  width: 20vh;
+  background-image: url("http://cloud.hunger-valley.com/music/public_fengge_xiaoqingxin.jpg-small");
+  background-size: cover;
+}
+
+footer li p {
+  margin-top: 1vh;
+  text-align: center;
+  font-size: 2vh;
+  font-weight: bold;
+}
+
+#background {
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  background-image: url("http://qukufile2.qianqian.com/data2/pic/eb8206edf8c79559588b4797d9418e8e/605007924/605007924.jpg@s_1,w_300,h_300");
+  filter: blur(10px);
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+#background::before {
+  position: absolute;
+  content: '';
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
