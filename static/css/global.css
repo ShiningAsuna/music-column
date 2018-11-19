@@ -33,7 +33,7 @@ main {
 }
 
 .layout {
-  width: 300px;
+  width: 250px;
 }
 
 @media (min-width: 600px) {
