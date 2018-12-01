@@ -68,7 +68,7 @@ main {
 .controller figure {
   height: 45vh;
   width: 45vh;
-  background-image: url("http://qukufile2.qianqian.com/data2/pic/eb8206edf8c79559588b4797d9418e8e/605007924/605007924.jpg@s_1,w_300,h_300");
+  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543061074218&di=c1f9a1707bdc69f207534349306f17cb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa9d3fd1f4134970aa72d31da9fcad1c8a6865dec.jpg");
   background-size: cover;
 }
 
@@ -82,6 +82,11 @@ main {
 .controller .buttons i {
   flex: 1;
   font-size: 4.25vh;
+  transition: all 0.5s;
+}
+
+.controller .buttons i:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .controller .buttons i::before {
@@ -145,8 +150,8 @@ main {
 .info .progress .prog-cur {
   position: absolute;
   height: 0.8vh;
-  width: 95%;
   background-color: #fff;
+  transition: width 0.5s;
 }
 
 .info .progress .cur-time {
@@ -161,6 +166,7 @@ main {
 }
 
 .info .lyrics {
+  display: inline-block;
   margin-top: 2vh;
   color: rgba(255, 255, 255, 0.6);
   font-size: 3vh;
@@ -185,6 +191,7 @@ footer i.iconfont {
 
 footer:hover i.iconfont {
   opacity: 1;
+  cursor: pointer;
 }
 
 footer i.iconfont::before {
@@ -193,6 +200,7 @@ footer i.iconfont::before {
 }
 
 footer i.icon-shangyige {
+  display: none;
   left: 4%;
 }
 
@@ -204,6 +212,11 @@ footer .fig-ct {
   overflow: hidden;
   margin: 0 auto;
   height: 100%;
+  position: relative;
+}
+
+footer ul {
+  position: absolute;
 }
 
 footer li {
@@ -224,7 +237,7 @@ footer li.active {
 footer li .cover {
   height: 16vh;
   width: 20vh;
-  background-image: url("http://cloud.hunger-valley.com/music/public_fengge_xiaoqingxin.jpg-small");
+  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543061074218&di=c1f9a1707bdc69f207534349306f17cb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa9d3fd1f4134970aa72d31da9fcad1c8a6865dec.jpg");
   background-size: cover;
 }
 
@@ -241,7 +254,7 @@ footer li p {
   bottom: -10px;
   left: -10px;
   right: -10px;
-  background-image: url("http://qukufile2.qianqian.com/data2/pic/eb8206edf8c79559588b4797d9418e8e/605007924/605007924.jpg@s_1,w_300,h_300");
+  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543061074218&di=c1f9a1707bdc69f207534349306f17cb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa9d3fd1f4134970aa72d31da9fcad1c8a6865dec.jpg");
   filter: blur(10px);
   background-size: cover;
   opacity: 0.8;
