@@ -23,6 +23,7 @@ var player = {
       _this.getMusic(albumId, function(song){
         if(albumId === 'channal_collection' && song == undefined){
           // 收藏列表为空
+          alertMsg.show('收藏列表为空');
           return;
         } 
         song.album_name = albumName;
@@ -55,6 +56,20 @@ var player = {
       var sumLength = parseInt($(this).width());
       var percent = e.offsetX / sumLength;
       _this.song.currentTime = _this.song.duration * percent;
+      // 设置歌词
+      var latestKey = '';
+      for(var key in _this.lyricObj){
+        keyTimeArr = key.split(':');
+        keySec = parseInt(keyTimeArr[0])*60 + parseInt(keyTimeArr[1]);
+        if(keySec >= _this.song.currentTime){
+          if(_this.lyricObj[latestKey] !== _this.$info.find('.lyrics').text()){
+            _this.$info.find('.lyrics').text(_this.lyricObj[latestKey]);
+            _this.$info.find('.lyrics').animateText('fadeIn');
+          }
+          break;
+        }
+        latestKey = key;
+      }
     })
 
     // 设置播放按钮
@@ -75,8 +90,9 @@ var player = {
         _this.removeFromArr(_this.collectionId, _this.songid);
         localStorage.setItem('song-collection', JSON.stringify(_this.songCollection));
         localStorage.setItem('collection-id', JSON.stringify(_this.collectionId));
-        _this.isCollected = true;
+        _this.isCollected = false;
         $(this).css('color', 'rgba(255, 255, 255, 0.6)');
+        alertMsg.show('取消收藏成功');
       } else {
         _this.songCollection.push(_this.songObj);
         _this.collectionId.push(_this.songid);
@@ -84,11 +100,14 @@ var player = {
         localStorage.setItem('collection-id', JSON.stringify(_this.collectionId));
         _this.isCollected = true;
         $(this).css('color', 'red');
+        alertMsg.show('收藏成功，歌曲已收藏至“我的收藏”歌单');
       }
     })
   },
   render: function(song){
     var _this = this;
+    _this.lyricObj = {};
+    _this.$info.find('.lyrics').html('');
     if(_this.collectionId.indexOf(song.sid)>-1){
       _this.$controller.find('.icon-xiai').css('color', 'red');
       _this.isCollected = true;
@@ -123,12 +142,12 @@ var player = {
   },
   getLyric: function(){
     var _this = this;
-    _this.lyricObj = {};
     $.ajax({
       type: 'GET',
       url: 'https://jirenguapi.applinzi.com/fm/getLyric.php?sid=' + _this.songid,
       dataType: 'json'
     }).done(function(result){
+      _this.lyricObj = {};
       var lyric = result.lyric;
       var lyricArr = lyric.split('\n');
       lyricArr.forEach(function(line){
@@ -140,6 +159,10 @@ var player = {
           })
         }
       })
+    }).fail(function(){
+      _this.lyricObj = {
+        '00:01': '当前歌曲暂无歌词'
+      };
     })
   },
   renderLyric: function(radio){
