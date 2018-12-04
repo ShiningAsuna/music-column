@@ -84,7 +84,7 @@ var player = {
     })
 
     // 收藏
-    _this.$controller.find('.icon-xiai').on('click', function(){
+    _this.$controller.find('.icon-aixin').on('click', function(){
       if(_this.isCollected){
         _this.removeFromArr(_this.songCollection, _this.songObj);
         _this.removeFromArr(_this.collectionId, _this.songid);
@@ -109,10 +109,10 @@ var player = {
     _this.lyricObj = {};
     _this.$info.find('.lyrics').html('');
     if(_this.collectionId.indexOf(song.sid)>-1){
-      _this.$controller.find('.icon-xiai').css('color', 'red');
+      _this.$controller.find('.icon-aixin').css('color', 'red');
       _this.isCollected = true;
     } else {
-      _this.$controller.find('.icon-xiai').css('color', 'rgba(255, 255, 255, 0.6)');
+      _this.$controller.find('.icon-aixin').css('color', 'rgba(255, 255, 255, 0.6)');
       _this.isCollected = false;
     }
     _this.songid = song.sid;
