@@ -51,6 +51,11 @@ var player = {
       _this.renderLyric(this);
     })
 
+    // 歌曲播放完毕
+    _this.song.addEventListener('ended', function(){
+      _this.$controller.find('.icon-next').trigger('click');
+    })
+
     // 设置进度条点击
     _this.$info.find('.prog-sum').on('click', function(e){
       var sumLength = parseInt($(this).width());
@@ -93,6 +98,8 @@ var player = {
         _this.isCollected = false;
         $(this).css('color', 'rgba(255, 255, 255, 0.6)');
         alertMsg.show('取消收藏成功');
+        var lovesNum = parseInt(_this.$info.find('.loves-num').text());
+        _this.$info.find('.loves-num').text(--lovesNum);
       } else {
         _this.songCollection.push(_this.songObj);
         _this.collectionId.push(_this.songid);
@@ -101,6 +108,8 @@ var player = {
         _this.isCollected = true;
         $(this).css('color', 'red');
         alertMsg.show('收藏成功，歌曲已收藏至“我的收藏”歌单');
+        var lovesNum = parseInt(_this.$info.find('.loves-num').text());
+        _this.$info.find('.loves-num').text(++lovesNum);
       }
     })
   },
@@ -108,6 +117,7 @@ var player = {
     var _this = this;
     _this.lyricObj = {};
     _this.$info.find('.lyrics').html('');
+
     if(_this.collectionId.indexOf(song.sid)>-1){
       _this.$controller.find('.icon-aixin').css('color', 'red');
       _this.isCollected = true;
@@ -115,12 +125,20 @@ var player = {
       _this.$controller.find('.icon-aixin').css('color', 'rgba(255, 255, 255, 0.6)');
       _this.isCollected = false;
     }
+
     _this.songid = song.sid;
     _this.$controller.find('figure').css('background-image', 'url("' + song.picture + '")');
     $('#background').css('background-image', 'url("' + song.picture + '")');
     easytpl.replace(_this.$info, song);
     _this.song.src = song.url;
     _this.$controller.find('.ico-play').addClass('icon-pause').removeClass('icon-start');
+
+    var lovesNum = Math.floor(Math.random()*200);
+    var likesNum = Math.floor(lovesNum + Math.random()*1000);
+    var listenedNum = Math.floor(likesNum + Math.random()*5000);
+    _this.$info.find('.listened-num').text(listenedNum);
+    _this.$info.find('.loves-num').text(lovesNum);
+    _this.$info.find('.like-it-num').text(likesNum);
   },
   getMusic: function(albumId, callback){
     var _this = this;
